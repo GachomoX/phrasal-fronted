@@ -3,7 +3,7 @@ import DisplayPhrasal from './DisplayPhrasal';
 
 
 
-export default function Verb({verbs, listverbprep, verbprepadv}){
+export default function Verb({verbs, listverbprep, verbprepadv, meaning}){
     
     const [verbName, setVerbName] = useState(null);
 
@@ -21,12 +21,15 @@ export default function Verb({verbs, listverbprep, verbprepadv}){
         listverbprep(verbid);
     }
 
+    
+
     function filteredVerbPrep(){
         return(
-           <DisplayPhrasal  verbprepadv={verbprepadv} verbName={verbName}/>
+           <DisplayPhrasal  verbprepadv={verbprepadv} verbName={verbName} meaning={meaning}/>
         )
     }
 
+   
     console.log("en vErb")
     console.log(verbs)
     return(

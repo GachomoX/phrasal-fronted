@@ -1,12 +1,14 @@
-import { faCentercode } from '@fortawesome/free-brands-svg-icons';
 import React from 'react';
 
-export default function DisplayPhrasal({verbprepadv, verbName}) {
+export default function DisplayPhrasal({verbprepadv, verbName, meaning}) {
     console.log("en display preposi")
     console.log(verbprepadv)
+
     return(
         <div>
-            En display
+            {verbprepadv.map((vp) =>
+                <button onClick = {() => meaning(vp.phrasalid) }>{vp.name}</button>
+            )}
         </div>
     )
 }
