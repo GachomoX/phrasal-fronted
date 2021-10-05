@@ -16,7 +16,8 @@ const StyledCircle = styled.circle`
     position: absolute;
     border-radius: 50%;
     text-align:center;
-    
+    display:  ${(props) => props.display ? props.display : "none"}
+
 `;
 
 export default StyledCircle;

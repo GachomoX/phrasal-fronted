@@ -11,7 +11,8 @@ export default function VerbContainer(){
     const [verId, setVerId] = useState(null);
     const [verbprepadv, setVerbprepadv] = useState(null);
     const [verbMeaning, setVerbMeaning] = useState(null);
-    const [newMeaning, setNewMeaning] = useState(false)
+    const [newMeaning, setNewMeaning] = useState(false);
+    const [updLearned, setUpdLearned] = useState(null);
 
     useEffect(()=>{
       fetch(BASE_URL + 'verbs')
@@ -22,8 +23,6 @@ export default function VerbContainer(){
     console.log(verbs)
 
     function listverbprep(verbid){
-        console.log("entre a buscar prepos")
-        console.log(verbid)
         const config = {
             method: "GET",
             headers: {
@@ -31,19 +30,15 @@ export default function VerbContainer(){
             }
         }
         let urlComplete = BASE_URL + 'verbs/' + verbid + '/prepadvs'  
-        console.log(urlComplete) 
         fetch(urlComplete,config)
             .then(response => response.json())
             .then(json =>setVerbprepadv(json)
         )
         setVerId(verbid)
-        console.log("PREPOSICIONES BUSCADAS")
     }
 
 
    function meaning(pid){
-    console.log("entre a buscar meanings")
-
     const config = {
         method: "GET",
         headers: {
@@ -51,24 +46,30 @@ export default function VerbContainer(){
         }
     }
     let urlComplete = BASE_URL + 'meanings/' + pid 
-    console.log(urlComplete) 
     fetch(urlComplete,config)
         .then(response => response.json())
         .then(json =>setVerbMeaning(json))
     setNewMeaning(true)
-    console.log("MEANINGS BUSCADOS")
    }
 
-
-
-  console.log("verbprepadv")
-  console.log(verbprepadv)
-  console.log(verbMeaning)
+    function updateLearned(idphras){
+      const config = {
+        method: "POST",
+        headers: {
+          "Content-type":  "application/json"
+        }
+      }
+      let urlComplete = BASE_URL + 'users/1/' + idphras
+      console.log(urlComplete) 
+      fetch(urlComplete,config)
+          .then(response => response.json())
+          .then(json =>console.log(json))
+    }
 
     function allverbs(){
         console.log("en funcion")
         return (
-          <Verb verbs={verbs} listverbprep={listverbprep} verbprepadv={verbprepadv} meaning={meaning} verbMeaning={verbMeaning} newMeaning={newMeaning}/>
+          <Verb verbs={verbs} listverbprep={listverbprep} verbprepadv={verbprepadv} meaning={meaning} verbMeaning={verbMeaning} newMeaning={newMeaning} updateLearned={updateLearned}/>
         )
     }
     

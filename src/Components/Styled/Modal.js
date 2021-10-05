@@ -1,5 +1,8 @@
 import React from "react";
 import styled from "styled-components";
+import { MdClose } from 'react-icons/md';
+import StyledCircle from "./StyledCircle";
+import StyledIcon from "./StyledIcon";
 
 
 const Background = styled.div`
@@ -14,51 +17,57 @@ height: 300px;
 
 const ModalWrapper = styled.div`
     width: 700px;
-    height: 300px;
+    height: 350px;
     box-shadow: 0 5px 16px rgba(0,0,0, 0.2);
     background: #fff;
     color: #000;
     position: fixed;
     display: flex;
-    justify-content: center;
-    align-items: center;
+
     border-radius:10px;
 
 `;
 
 const ModalContent = styled.div`
-    display:flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    line-height: 1.8;
+    width:100%;
+    line-height: 30px;
     color: #141414;
     p{
-        margin-bottom: 1rem;
+        padding: 10px 10px;
+        font-size: 20px;
+        font-family: Roboto;
+      
     }
-    button{
-        padding: 10px 24px;
-        background: #141414;
-        color: #fff;
-        border: none;
-    }
+
 `;
 
+const CloseModalButton = styled(MdClose)`
+    cursor:pointer;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    z-index: 10;
 
+`
 
 export const Modal = ({showModal, setShowModal, bodyMeaning}) => {
     return(
         <>
         {showModal ? (
                 <ModalWrapper showModal={showModal}>
-                    <ModalContent>
-                    <div>{bodyMeaning}</div>
+                    <ModalContent>  
+                        <StyledCircle display={"none"} ></StyledCircle> 
+                        <CloseModalButton label='Close' onClick={()=>setShowModal(prev=>!prev)}>X</CloseModalButton>
+                        {bodyMeaning}
                     </ModalContent>
-                    <button label='Close' onClick={()=>setShowModal(prev=>!prev)}/>
+                  
                 </ModalWrapper>
  
         ) : null}
-        
+      
         </>
     );
 }

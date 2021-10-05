@@ -7,7 +7,7 @@ import StyledTd from './Styled/StyledTd';
 
 
 
-export default function Verb({verbs, listverbprep, verbprepadv, meaning, verbMeaning, newMeaning}){
+export default function Verb({verbs, listverbprep, verbprepadv, meaning, verbMeaning, newMeaning, updateLearned}){
     
     const [verbName, setVerbName] = useState(null);
 
@@ -30,7 +30,7 @@ export default function Verb({verbs, listverbprep, verbprepadv, meaning, verbMea
 
     function filteredVerbPrep(){
         return(
-           <DisplayPhrasal  verbprepadv={verbprepadv} verbName={verbName} meaning={meaning} verbMeaning={verbMeaning} newMeaning={newMeaning}/>
+           <DisplayPhrasal  verbprepadv={verbprepadv} verbName={verbName} meaning={meaning} verbMeaning={verbMeaning} newMeaning={newMeaning} updateLearned={updateLearned}/>
         )
     }
 
