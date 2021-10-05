@@ -6,6 +6,7 @@ const StyledTitle = styled.h1`
     width:100%;
     font-size:60px;
     height: 20px;
+    margin-left: 60px;
 `;
 
 export default StyledTitle;

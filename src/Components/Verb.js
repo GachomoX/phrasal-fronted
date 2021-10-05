@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import DisplayPhrasal from './DisplayPhrasal';
 import styled from 'styled-components';
 import StyleSecondMod from './Styled/StyledSecondMod';
+import StyledSelect  from './Styled/StyledSelect';
+import StyledTd from './Styled/StyledTd';
 
 
 
@@ -37,15 +39,15 @@ export default function Verb({verbs, listverbprep, verbprepadv, meaning}){
     return(
         <StyleSecondMod>
             <tr>
-                <td>Verb : </td>
-                    <td>
-                        <select onChange={(e)=>{
+                <StyledTd fontsize={"25px"}>Verb : </StyledTd>
+                    <td >
+                        <StyledSelect onChange={(e)=>{
                             onChangeComboVerb(e)}} >
                             <option value='0'>--Choose Verb--</option>
                             {verbs.map((v) =>
                                 <option key={v.id} value={v.id}>{v.name}</option>         
                             )}
-                        </select>
+                        </StyledSelect>
                     </td>
             </tr>
           
