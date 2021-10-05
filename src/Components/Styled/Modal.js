@@ -46,13 +46,13 @@ const ModalContent = styled.div`
 
 
 
-export const Modal = ({showModal, setShowModal}) => {
+export const Modal = ({showModal, setShowModal, bodyMeaning}) => {
     return(
         <>
         {showModal ? (
                 <ModalWrapper showModal={showModal}>
                     <ModalContent>
-                    <div>Modal Window</div>
+                    <div>{bodyMeaning}</div>
                     </ModalContent>
                     <button label='Close' onClick={()=>setShowModal(prev=>!prev)}/>
                 </ModalWrapper>

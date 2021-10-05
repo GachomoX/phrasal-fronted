@@ -38,9 +38,18 @@ export default function DisplayPhrasal({verbprepadv, verbName,  verbmeaning, mea
 
     function filteredVerbMeaning(){
       console.log("entre a mostrar modal")
+      let  bodyMeaning = (
+        <div>
+            {verbMeaning.map((mean) =>
+               <tr>{mean.definition}</tr>
+            )}
+        
+        </div>
+    )
+
       return(
-     
-        <Modal showModal={showModal} setShowModal={setShowModal} />
+        
+        <Modal showModal={showModal} setShowModal={setShowModal} bodyMeaning={bodyMeaning}/>
         )
     }
 
