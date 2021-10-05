@@ -38,21 +38,20 @@ export default function Verb({verbs, listverbprep, verbprepadv, meaning}){
     console.log(verbs)
     return(
         <StyleSecondMod>
-            <tr>
-                <StyledTd fontsize={"25px"}>Verb : </StyledTd>
-                    <td >
-                        <StyledSelect onChange={(e)=>{
-                            onChangeComboVerb(e)}} >
-                            <option value='0'>--Choose Verb--</option>
-                            {verbs.map((v) =>
-                                <option key={v.id} value={v.id}>{v.name}</option>         
-                            )}
-                        </StyledSelect>
-                    </td>
-            </tr>
-          
-            {verbprepadv &&  filteredVerbPrep() } 
-          
+            <tr height={"5px"}>
+                <StyledTd fontsize={"25px"}>Verb : 
+                </StyledTd>
+                <td>
+                    <StyledSelect onChange={(e)=>{
+                        onChangeComboVerb(e)}} >
+                        <option value='0'>--Choose Verb--</option>
+                        {verbs.map((v) =>
+                            <option key={v.id} value={v.id}>{v.name}</option>         
+                        )}
+                    </StyledSelect>
+                </td>
+            </tr> 
+            {verbprepadv &&  filteredVerbPrep() }  
         </StyleSecondMod>
     )
     
