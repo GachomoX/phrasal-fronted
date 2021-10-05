@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import Verb from './Verb'
+import Verb from './Verb';
+import Meanings from './Meanings';
 
 
 
@@ -9,7 +10,8 @@ export default function VerbContainer(){
     const [verbs, setVerbs] = useState(null);
     const [verId, setVerId] = useState(null);
     const [verbprepadv, setVerbprepadv] = useState(null);
-
+    const [verbMeaning, setVerbMeaning] = useState(null);
+    const [newMeaning, setNewMeaning] = useState(false)
 
     useEffect(()=>{
       fetch(BASE_URL + 'verbs')
@@ -38,39 +40,39 @@ export default function VerbContainer(){
         console.log("PREPOSICIONES BUSCADAS")
     }
 
-    function meaning(phrasalid){
-        console.log("prepadv id verb container")
-        console.log(phrasalid)
-        console.log("verb en meaning")
-        console.log(verId)
-        const config = {
-            method: "GET",
-            headers: {
-              "Content-type":  "application/json"
-            }
-        }
-        let urlComplete = BASE_URL + 'meanings/' + phrasalid 
-        console.log(urlComplete) 
-        fetch(urlComplete,config)
-            .then(response => response.json())
-            .then(json =>setVerbprepadv(json)
-        )
 
+   function meaning(pid){
+    console.log("entre a buscar meanings")
+
+    const config = {
+        method: "GET",
+        headers: {
+          "Content-type":  "application/json"
+        }
     }
+    let urlComplete = BASE_URL + 'meanings/' + pid 
+    console.log(urlComplete) 
+    fetch(urlComplete,config)
+        .then(response => response.json())
+        .then(json =>setVerbMeaning(json))
+    setNewMeaning(true)
+    console.log("MEANINGS BUSCADOS")
+   }
+
 
 
   console.log("verbprepadv")
   console.log(verbprepadv)
+  console.log(verbMeaning)
 
     function allverbs(){
         console.log("en funcion")
         return (
-          <Verb verbs = {verbs}  listverbprep = {listverbprep} verbprepadv = {verbprepadv} meaning={meaning}/>
+          <Verb verbs={verbs} listverbprep={listverbprep} verbprepadv={verbprepadv} meaning={meaning} verbMeaning={verbMeaning} newMeaning={newMeaning}/>
         )
     }
     
     return (
-
       <div>
          {verbs && allverbs()}
       </div>

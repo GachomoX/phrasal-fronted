@@ -4,12 +4,19 @@ import styled from 'styled-components';
 import StyleSecondMod from './Styled/StyledSecondMod';
 import StyledSelect  from './Styled/StyledSelect';
 import StyledTd from './Styled/StyledTd';
+import Meanings from './Meanings';
 
 
 
-export default function Verb({verbs, listverbprep, verbprepadv, meaning, verbMeaning, newMeaning}){
-    
+
+export default function Verb({verbs, listverbprep, verbprepadv}){
+
+    console.log("verprepadv");
+    console.log(verbprepadv)
+    const BASE_URL="http://127.0.0.1:3000/";
     const [verbName, setVerbName] = useState(null);
+    const [verbmeaning, setVerbmeaning] = useState(null);
+    const [newMeaning, setNewMeaning] = useState(false);
 
     const onChangeComboVerb = (e) =>{
         console.log("entre a cambio combo")
@@ -25,12 +32,13 @@ export default function Verb({verbs, listverbprep, verbprepadv, meaning, verbMea
         listverbprep(verbid);
     }
 
-    
-    
 
     function filteredVerbPrep(){
         return(
-           <DisplayPhrasal  verbprepadv={verbprepadv} verbName={verbName} meaning={meaning} verbMeaning={verbMeaning} newMeaning={newMeaning}/>
+        
+      
+           <DisplayPhrasal  verbprepdv={verbprepadv} verbName={verbName} verbmeaning={verbmeaning}/>
+      
         )
     }
 
@@ -53,7 +61,6 @@ export default function Verb({verbs, listverbprep, verbprepadv, meaning, verbMea
                 </td>
             </tr> 
             {verbprepadv &&  filteredVerbPrep() }  
-      
         </StyleSecondMod>
     )
     
