@@ -4,4 +4,4 @@ const StyledSelect = styled.select`
    
 `;
 
-export default StyledCircle;
+export default StyledSelect;

@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import DisplayPhrasal from './DisplayPhrasal';
 import styled from 'styled-components';
-import StyledMod from './Styled/StyledMod';
+import StyleSecondMod from './Styled/StyledSecondMod';
+
 
 
 export default function Verb({verbs, listverbprep, verbprepadv, meaning}){
@@ -34,10 +35,9 @@ export default function Verb({verbs, listverbprep, verbprepadv, meaning}){
     console.log("en vErb")
     console.log(verbs)
     return(
-        <StyledMod>
-            <div>
-                <tr>
-                    <td>Verb : </td>
+        <StyleSecondMod>
+            <tr>
+                <td>Verb : </td>
                     <td>
                         <select onChange={(e)=>{
                             onChangeComboVerb(e)}} >
@@ -47,10 +47,11 @@ export default function Verb({verbs, listverbprep, verbprepadv, meaning}){
                             )}
                         </select>
                     </td>
-                </tr>
-            </div>
+            </tr>
+          
             {verbprepadv &&  filteredVerbPrep() } 
-        </StyledMod>
+          
+        </StyleSecondMod>
     )
     
 }
