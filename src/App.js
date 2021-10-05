@@ -1,7 +1,8 @@
-import './App.css';
+
 import {Switch, Route, BrowserRouter} from 'react-router-dom';
 import NavBar from './Components/NavBar';
 import VerbContainer from './Components/VerbContainer';
+
 
 function App() {
   return (

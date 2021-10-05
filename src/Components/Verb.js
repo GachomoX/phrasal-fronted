@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import DisplayPhrasal from './DisplayPhrasal';
-
+import styled from 'styled-components';
+import StyledMod from './Styled/StyledMod';
 
 
 export default function Verb({verbs, listverbprep, verbprepadv, meaning}){
@@ -33,7 +34,7 @@ export default function Verb({verbs, listverbprep, verbprepadv, meaning}){
     console.log("en vErb")
     console.log(verbs)
     return(
-        <div>
+        <StyledMod>
             <div>
                 <tr>
                     <td>Verb : </td>
@@ -49,7 +50,7 @@ export default function Verb({verbs, listverbprep, verbprepadv, meaning}){
                 </tr>
             </div>
             {verbprepadv &&  filteredVerbPrep() } 
-        </div>
+        </StyledMod>
     )
     
 }
