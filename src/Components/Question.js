@@ -10,8 +10,18 @@ const Question = ({dispQues, setDispQuest, questions, score, setScore, answersra
     const [error, setError] = useState(false);
     const [good, setGood] = useState(0);
     const [bad, setBad] = useState(0);
-    
-    
+    const [botdeshab, setBotDesHab] = useState(true);
+    console.log("tipo boton")
+    console.log(botdeshab)
+function countQuest(){
+    if(dispQues >= 2){
+        setBotDesHab(false);
+    }
+    else{
+        setBotDesHab(true);
+    }
+    nextQ();
+}
  
 function answerselected(i){ 
     console.log("entrando correct");
@@ -51,7 +61,7 @@ function answerselected(i){
                                                      key={i} disabled={selected}>{opt}</button>)}
                 </div>
                     <div>
-                        <StyledButton  onClick={()=>{nextQ()}}>
+                        <StyledButton  disabled={!botdeshab} onClick={()=>{countQuest()}}>
                             Next
                         </StyledButton>
 
