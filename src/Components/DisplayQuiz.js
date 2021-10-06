@@ -17,6 +17,8 @@ console.log(questions)
  //Random to show the answers
    const answ = [0,1,2,3];
    const randansw= shuffle(answ);
+    console.log("nextQuestion");
+   console.log(nextQuestion)
   
    function shuffle(a) {
         for (let i = a.length - 1; i > 0; i--) {
@@ -32,31 +34,17 @@ console.log(questions)
     console.log("answers")
     console.log(answersram)
 
-function loadquestion(i){
-    console.log("i")
-    console.log(i)
- 
- }
- 
+    function nextQ(){
+        console.log("Entre a next q")
+        return (setDispQuest(dispQuest+1));
+    }
+       
 
 
     return (
         <div className="quiz">
-            <div className="subtitle">   {verbQName}</div>
-             {questions ? (
-             <>
-                <div className="quizInfo">
-                    <span>Score: {score}</span>
-                </div>
-                <Question dispQues={dispQuest} setDispQuest={setDispQuest} questions={questions} score={score} setScore={setScore} answersram={answersram}/>
-             
-             
-             
-             </>) : ( <CircularProgress style={{ margin: 100 }} 
-                                    color="inherit" size={150} thickness={1}/>)}
-         
-          
+            <div className="subtitle">{verbQName}</div>
+            <Question dispQues={dispQuest} setDispQuest={setDispQuest} questions={questions} answersram={answersram} nextQ={nextQ}/>
         </div>
-     
     )
 }
