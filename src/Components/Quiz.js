@@ -5,16 +5,18 @@ import StyledSelect  from './Styled/StyledSelect';
 import StyledTd from './Styled/StyledTd';
 import DisplayQuiz from './DisplayQuiz';
 
-export default function Quiz({quizverbs, listquestion, questions, listverbprepq, verbprepadvq }){
+export default function Quiz({quizverbs, listquestion, questions}){
     const [verbQName, setVerbQName] = useState(null);
     const [ verbqid, setVerbqId ] = useState(null);
+   
 
-    const onChangeComboVerb = (e) =>{
+    const onChangeComboVerb = (e) =>{  
         const verbqid= e.target.value;
         let indexq = e.target.selectedIndex; //get text of selected option
         setVerbQName(e.target.options[indexq].text);//get text of selected option
-        listverbprepq(verbqid);
-        //listquestion(verbqid);
+  
+        listquestion(verbqid);
+
         
     }
 
@@ -23,9 +25,11 @@ export default function Quiz({quizverbs, listquestion, questions, listverbprepq,
     console.log("verqbid")
     console.log(verbqid)
 
+
+
     function DisplayQuestions(){
         return(
-           <DisplayQuiz questions={questions} verbQName={verbQName} verbprepadvq={verbprepadvq}/>
+           <DisplayQuiz questions={questions} verbQName={verbQName} verbqid={verbqid} />
         )
     }
 
@@ -43,8 +47,10 @@ export default function Quiz({quizverbs, listquestion, questions, listverbprepq,
                         )}
                     </StyledSelect>
                 </td>
-            </tr> 
-            { questions && DisplayQuestions() && verbprepadvq}
+              
+            </tr>   
+            
+            { questions && DisplayQuestions() }
         </StyleSecondMod>
     )  
 }

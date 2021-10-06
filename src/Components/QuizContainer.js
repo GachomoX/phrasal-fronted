@@ -31,29 +31,13 @@ export default function QuizContainer(){
         setVerQId(verbqid)
     }
 
-    function listverbprepq(verbqid){
-        console.log("en listverbprepadv");
-        console.log(verbqid);
-        const config = {
-            method: "GET",
-            headers: {
-              "Content-type":  "application/json"
-            }
-        }
-        let urlComplete = BASE_URL + 'verbs/' + verbqid + '/prepadvs'  
-        fetch(urlComplete,config)
-            .then(response => response.json())
-            .then(json =>setVerbprepadvq(json)
-        )
-
-    }
-
+   
 console.log("Questions en QuizContainer")
 console.log(questions)
 
     function allQuizVerbs(){
         return (
-          <Quiz quizverbs={quizverbs} listquestion={listquestion} questions={questions} listverbprepq={listverbprepq} verbprepadvq={verbprepadvq}/>
+          <Quiz quizverbs={quizverbs} listquestion={listquestion} questions={questions}/>
         )
     }
     return (

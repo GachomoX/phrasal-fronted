@@ -12,8 +12,8 @@ import StyledCongrats from "./Styled/StyledCongrats";
 
 
 const Button = styled.button`
-  background-color: blue;
-  color: white;
+  background-color: #FE0404;
+  color: #0A0A0A;
   font-size: 20px;
   border-radius: 5px;
   margin: 10px 0px;
@@ -55,7 +55,7 @@ export default function DisplayPhrasal({verbprepadv, verbName,  verbmeaning, mea
     }
 
     function filteredVerbMeaning(){
-      console.log("entre a mostrar modal")
+
       let  bodyMeaning = (
           <div>
             <p>

@@ -2,28 +2,25 @@ import React from 'react';
 import { NavLink } from "react-router-dom";
 import "./navbar.css";
 import styled from 'styled-components';
-import StyledNavLink from './Styled/StyledNavLink';
-import StyledTitle from './Styled/StyledTitle';
+
+import './navlink.css';
 import StyledNav from './Styled/StyledNav';
 
 function NavBar() {
     return (
      
         <StyledNav>
-             <StyledTitle>
-               PHRASAL VERBS
-            </StyledTitle>
-             <StyledNavLink>
-                <NavLink  to="/">
+        
+                <NavLink  className="navlink" to="/">
                     Home
-                </NavLink>
-                <NavLink to="/VerbContainer">
+                </NavLink >
+                <NavLink className="navlink" to="/VerbContainer">
                     Verb
-                </NavLink>
-                <NavLink   to="/QuizContainer">
+                </NavLink >
+                <NavLink className="navlink" to="/QuizContainer">
                     Quiz
-                </NavLink>   
-            </StyledNavLink>
+                </NavLink >   
+
           </StyledNav> 
     )
 }
