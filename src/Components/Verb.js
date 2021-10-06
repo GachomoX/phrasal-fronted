@@ -12,21 +12,12 @@ export default function Verb({verbs, listverbprep, verbprepadv, meaning, verbMea
     const [verbName, setVerbName] = useState(null);
 
     const onChangeComboVerb = (e) =>{
-        console.log("entre a cambio combo")
         const verbid= e.target.value;
         let index = e.target.selectedIndex; //get text of selected option
-        console.log("verbid")
-        console.log(verbid);
-
-        console.log("index")
-        console.log(index);
         setVerbName(e.target.options[index].text);//get text of selected option
-        console.log(verbName);
         listverbprep(verbid);
     }
 
-    
-    
 
     function filteredVerbPrep(){
         return(
@@ -34,9 +25,6 @@ export default function Verb({verbs, listverbprep, verbprepadv, meaning, verbMea
         )
     }
 
-   
-    console.log("en vErb")
-    console.log(verbs)
     return(
         <StyleSecondMod>
             <tr height={"5px"}>

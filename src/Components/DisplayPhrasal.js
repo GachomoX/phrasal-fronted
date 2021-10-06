@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import styled from 'styled-components';
 import StyledGrid from './Styled/StyledGrid';
 import StyledCircle from './Styled/StyledCircle';
@@ -8,6 +8,7 @@ import { faCheckCircle } from '@fortawesome/free-regular-svg-icons';
 import { faBookmark } from '@fortawesome/free-solid-svg-icons';
 import StyledIcon from "./Styled/StyledIcon";
 import StyledButton from "./Styled/StyledButton";
+import StyledCongrats from "./Styled/StyledCongrats";
 
 
 const Button = styled.button`
@@ -26,10 +27,11 @@ export default function DisplayPhrasal({verbprepadv, verbName,  verbmeaning, mea
     console.log("en DISPLAYPHRASAL preposi")
     console.log(verbmeaning)
     console.log(newMeaning)
-
+   
     const [showModal, setShowModal] = useState(false);
     const [clickPrepadv, setClickPrepadv] = useState(null);
     const [phrasalIdNow, setPhrasalIdNow] = useState(null);
+    const [congrats, setCongrats] = useState(false)
     const openModal = () => {
       setShowModal(prev => !prev)
     }
@@ -40,6 +42,7 @@ export default function DisplayPhrasal({verbprepadv, verbName,  verbmeaning, mea
       setShowModal(prev=>!prev);
       setClickPrepadv(pname);
       setPhrasalIdNow(phid);
+      setCongrats(false);
       meaning(phid);
 
     }
@@ -47,8 +50,9 @@ export default function DisplayPhrasal({verbprepadv, verbName,  verbmeaning, mea
 
     function handleOnClickLearned(){
       updateLearned(phrasalIdNow);
+      setCongrats(true);
+  
     }
-
 
     function filteredVerbMeaning(){
       console.log("entre a mostrar modal")
@@ -70,15 +74,17 @@ export default function DisplayPhrasal({verbprepadv, verbName,  verbmeaning, mea
           <StyledButton onClick={()=>handleOnClickLearned()}>
             <StyledIcon><FontAwesomeIcon icon={faCheckCircle} /></StyledIcon>
           </StyledButton>
-          
+          {(congrats) ? (
+            <StyledCongrats>
+              <td>C</td> <td>O</td> <td>N</td> <td>G</td> <td>R</td> <td>A</td> <td>T</td> <td>S</td> <td>!</td> <td>!</td>
+            </StyledCongrats>):null}
         </div>)
       return(
         <Modal showModal={showModal} setShowModal={setShowModal} bodyMeaning={bodyMeaning}/>
         )
     }
 
-console.log("Lo que tiene VerbMeaning")
-console.log(verbMeaning)
+
     return(
          <StyledGrid>
             {verbprepadv.map((vp) =>

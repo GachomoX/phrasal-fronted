@@ -14,12 +14,15 @@ function NavBar() {
                PHRASAL VERBS
             </StyledTitle>
              <StyledNavLink>
-                <NavLink className="navopt" to="/">
+                <NavLink  to="/">
                     Home
                 </NavLink>
-                <NavLink  className="navopt" to="/VerbContainer">
+                <NavLink to="/VerbContainer">
                     Verb
                 </NavLink>
+                <NavLink   to="/QuizContainer">
+                    Quiz
+                </NavLink>   
             </StyledNavLink>
           </StyledNav> 
     )

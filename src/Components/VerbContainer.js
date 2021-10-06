@@ -1,7 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import Verb from './Verb';
-import Meanings from './Meanings';
-
 
 
 export default function VerbContainer(){
@@ -14,13 +12,13 @@ export default function VerbContainer(){
     const [newMeaning, setNewMeaning] = useState(false);
     const [updLearned, setUpdLearned] = useState(null);
 
+
     useEffect(()=>{
       fetch(BASE_URL + 'verbs')
           .then (res => res.json())
           .then (json => setVerbs(json))
     },[])
 
-    console.log(verbs)
 
     function listverbprep(verbid){
         const config = {
@@ -38,19 +36,19 @@ export default function VerbContainer(){
     }
 
 
-   function meaning(pid){
-    const config = {
-        method: "GET",
-        headers: {
-          "Content-type":  "application/json"
-        }
+    function meaning(pid){
+      const config = {
+          method: "GET",
+          headers: {
+            "Content-type":  "application/json"
+          }
+      }
+      let urlComplete = BASE_URL + 'meanings/' + pid 
+      fetch(urlComplete,config)
+          .then(response => response.json())
+          .then(json =>setVerbMeaning(json))
+      setNewMeaning(true)
     }
-    let urlComplete = BASE_URL + 'meanings/' + pid 
-    fetch(urlComplete,config)
-        .then(response => response.json())
-        .then(json =>setVerbMeaning(json))
-    setNewMeaning(true)
-   }
 
     function updateLearned(idphras){
       const config = {
@@ -63,11 +61,10 @@ export default function VerbContainer(){
       console.log(urlComplete) 
       fetch(urlComplete,config)
           .then(response => response.json())
-          .then(json =>console.log(json))
+          .then(json =>setUpdLearned(json))
     }
 
     function allverbs(){
-        console.log("en funcion")
         return (
           <Verb verbs={verbs} listverbprep={listverbprep} verbprepadv={verbprepadv} meaning={meaning} verbMeaning={verbMeaning} newMeaning={newMeaning} updateLearned={updateLearned}/>
         )
