@@ -7,7 +7,7 @@ import './index.css';
 
 const StyledMain = styled.div`
   min-height: 98vh;
-  background: linear-gradient(to right top, #0821F2 , #C0C0C0);
+  background: linear-gradient(to right top, gray , white);
   margin: 5px;
   width: 100%;
 `;

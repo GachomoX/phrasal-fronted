@@ -1,12 +1,18 @@
+import './quiz.css';
 import React, {useState, useRef} from 'react';
 import styled from 'styled-components';
+import { CircularProgress } from '@material-ui/core';
+import Question  from './Question';
 
 
 export default function DisplayQuiz({questions, verbQName, verbqid}){
 console.log("estoy en DISPLAYQUIZ")
 console.log("questions en DisplayQuiz")
 console.log(questions)
- const [nextQuestion, setNextQuestion]= useState(0)
+ const [nextQuestion, setNextQuestion]= useState(0);
+ const [score, setScore] = useState(0);
+ const [dispQuest, setDispQuest] = useState(0);
+ const [options, setOptions] = useState(null);
     
  //Random to show the answers
    const answ = [0,1,2,3];
@@ -30,30 +36,26 @@ function loadquestion(i){
     console.log("i")
     console.log(i)
  
-    const questiondisp =(
-        <>
-        <tr>{questions[i].question}</tr>
-        <button onClick={loadquestion(i)}>{answersram[0]}</button>
-        <button>{answersram[1]}</button>
-        <button>{answersram[2]}</button>
-        <button>{answersram[3]}</button>
-        </>)
-        setNextQuestion(i++);
-    return questiondisp;
-}
-
-
-    
+ }
+ 
 
 
     return (
-        <div>
-            <button onClick={loadquestion(nextQuestion)}>Start</button>
-                            <td>
-              <tr >
-                  
-              </tr>
-            </td>
+        <div className="quiz">
+            <div className="subtitle">   {verbQName}</div>
+             {questions ? (
+             <>
+                <div className="quizInfo">
+                    <span>Score: {score}</span>
+                </div>
+                <Question dispQues={dispQuest} setDispQuest={setDispQuest} questions={questions} score={score} setScore={setScore} answersram={answersram}/>
+             
+             
+             
+             </>) : ( <CircularProgress style={{ margin: 100 }} 
+                                    color="inherit" size={150} thickness={1}/>)}
+         
+          
         </div>
      
     )

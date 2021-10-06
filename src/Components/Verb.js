@@ -26,7 +26,7 @@ export default function Verb({verbs, listverbprep, verbprepadv, meaning, verbMea
     }
 
     return(
-        <StyleSecondMod>
+        <div>
             <tr height={"5px"}>
                 <StyledTd fontsize={"25px"}>Verb : 
                 </StyledTd>
@@ -42,7 +42,7 @@ export default function Verb({verbs, listverbprep, verbprepadv, meaning, verbMea
             </tr> 
             {verbprepadv &&  filteredVerbPrep() }  
       
-        </StyleSecondMod>
+        </div>
     )
     
 }
