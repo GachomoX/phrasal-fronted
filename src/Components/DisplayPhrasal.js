@@ -59,16 +59,18 @@ export default function DisplayPhrasal({verbprepadv, verbName,  verbmeaning, mea
       let  bodyMeaning = (
           <div>
             <p>
-              <h3>{verbName} {clickPrepadv}</h3>
+              <h3 className="questionphrasal">{verbName} {clickPrepadv}</h3>
+              <div className="divider"></div>
               {verbMeaning.map((mean,i) => 
-              <tr style={{backgroundColor: i % 2 == 0?  'whitesmoke':'white', minHeight:'40px', minWidth: '100px'}}>
-              <td>
-                <StyledIcon ><FontAwesomeIcon icon={faBookmark}/></StyledIcon>
-              </td>
-              <td>
-                {mean.definition}
-                </td>
-              </tr>
+                <tr style={{backgroundColor: i % 2 == 0?  'whitesmoke':'white', minHeight:'40px', minWidth: '100px'}}>
+              
+                  <td>
+                    <StyledIcon ><FontAwesomeIcon icon={faBookmark}/></StyledIcon>
+                  </td>
+                  <td>
+                    {mean.definition}
+                  </td>
+                </tr>
               )}
           </p>
           <StyledButton onClick={()=>handleOnClickLearned()}>
