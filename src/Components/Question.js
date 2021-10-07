@@ -34,25 +34,12 @@ function answerselected(i){
         setBad(bad+1);
     }
    
-  
-    //console.log("i")
-   // console.log(i);
     console.log("dispQues Question actual")
     console.log(dispQues)
-    //console.log("respuestas aleatorias")
-    //console.log(answersram);
-   // console.log("preguntas")
-   // console.log(questions);
-   // console.log("wrong")
-   // console.log(bad);
-   // console.log("correct")
-   // console.log(good);
-
    
 }
 
   
- //console.log(answersram)
   
     return(
         <div className="question">

@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import StyleSecondMod from './Styled/StyledSecondMod';
 import StyledSelect  from './Styled/StyledSelect';
 import StyledTd from './Styled/StyledTd';
+import StyledContent from './Styled/StyledContent';
+import StyledSettings from './Styled/StyledSettings';
 
 
 
@@ -26,23 +28,23 @@ export default function Verb({verbs, listverbprep, verbprepadv, meaning, verbMea
     }
 
     return(
-        <div>
-            <tr height={"5px"}>
-                <StyledTd fontsize={"25px"}>Verb : 
-                </StyledTd>
-                <td>
-                    <StyledSelect onChange={(e)=>{
+        <StyledContent >
+            <StyledSettings>
+                <td> Verb:  </td>
+                <StyledSelect onChange={(e)=>{
                         onChangeComboVerb(e)}} >
-                        <option value='0'>--Choose Verb--</option>
+                        <option value='0'>-- Choose Verb --</option>
                         {verbs.map((v) =>
                             <option key={v.id} value={v.id}>{v.name}</option>         
                         )}
-                    </StyledSelect>
-                </td>
-            </tr> 
-            {verbprepadv &&  filteredVerbPrep() }  
-      
-        </div>
+                </StyledSelect>
+            </StyledSettings>
+            {verbprepadv &&  filteredVerbPrep()}
+        </StyledContent>
     )
     
 }
+
+
+
+

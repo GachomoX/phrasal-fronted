@@ -31,12 +31,6 @@ export default function DisplayQuiz({questions, verbQName, verbqid, nextQ, dispQ
 //End Random to show the answers
 
     const answersram = randansw.map((i)=>questions[i].answer);
-   // console.log("answers")
-   // console.log(answersram)
-
-    
-       
-
 
     return (
         <div className="quiz">

@@ -35,9 +35,6 @@ export default function QuizContainer(){
     }
 
     function nextQ(){
-        console.log("Entre a next q");
-        console.log("ESTOY AQUIIIIIIIIIIIIIIII")
-     
         setDispQuest(dispQuest+1);   
     }
 

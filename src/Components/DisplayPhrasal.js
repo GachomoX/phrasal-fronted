@@ -87,9 +87,11 @@ export default function DisplayPhrasal({verbprepadv, verbName,  verbmeaning, mea
 
     return(
          <StyledGrid>
+           <div className="singleQuestion">
             {verbprepadv.map((vp) =>
-               <div><Button onClick = {() => lookmeaning(vp.phrasalid, vp.name) }>{vp.name}</Button></div>
+               <div className="options"><button className={"singleOptionOrange"} onClick = {() => lookmeaning(vp.phrasalid, vp.name) }>{vp.name}</button></div>
             )}
+            </div>
             <StyledCircle display={"block"} >
                   <h1> {verbName}</h1>
             </StyledCircle>
