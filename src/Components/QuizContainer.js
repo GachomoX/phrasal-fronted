@@ -8,15 +8,42 @@ export default function QuizContainer(){
     const [ verqId, setVerQId] = useState(null);
     const [ questions, setQuestions ] = useState(null);
     const [ verbprepadvq, setVerbprepadvq ] = useState(null);
+    const [dispQuest, setDispQuest] = useState(0);
+
+    const [good, setGood] = useState(0);
+    const [bad, setBad] = useState(0);
+
+//console.log("Good")
+//console.log(good)
+////console.log("bad")
+//console.log(bad)
+
 
     useEffect(()=>{
         fetch(BASE_URL + 'verbs')
             .then (res => res.json())
             .then (json => setQuizVerbs(json))
       },[])
+    
+   
 
+    function updusersuc(){
+        console.log('good')
+        console.log(good)
+        console.log('bad')
+        console.log(bad)
+    }
+
+    function nextQ(){
+        console.log("Entre a next q");
+        console.log("ESTOY AQUIIIIIIIIIIIIIIII")
+     
+        setDispQuest(dispQuest+1);   
+    }
 
     function listquestion(verbqid){
+        setDispQuest(0);
+    
         const config = {
             method: "GET",
             headers: {
@@ -32,12 +59,13 @@ export default function QuizContainer(){
     }
 
    
-console.log("Questions en QuizContainer")
-console.log(questions)
+   
+//console.log("Questions en QuizContainer")
+//console.log(questions)
 
     function allQuizVerbs(){
         return (
-          <Quiz quizverbs={quizverbs} listquestion={listquestion} questions={questions}/>
+          <Quiz quizverbs={quizverbs} listquestion={listquestion} questions={questions} nextQ={nextQ} dispQuest={dispQuest} setGood={setGood} setBad={setBad} good={good} bad={bad} updusersuc={updusersuc}/>
         )
     }
     return (
