@@ -40,7 +40,8 @@ export default function QuizContainer(){
 
     function listquestion(verbqid){
         setDispQuest(0);
-    
+        setGood(0);
+        setBad(0);
         const config = {
             method: "GET",
             headers: {
@@ -55,10 +56,6 @@ export default function QuizContainer(){
         setVerQId(verbqid)
     }
 
-   
-   
-//console.log("Questions en QuizContainer")
-//console.log(questions)
 
     function allQuizVerbs(){
         return (

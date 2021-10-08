@@ -21,13 +21,6 @@ export default function Quiz({quizverbs, listquestion, questions, nextQ, dispQue
         listquestion(verbqid);
     }
 
-    //console.log("Questions en Quiz.js");
-   // console.log(questions)
-   // console.log("verqbid")
-   // console.log(verbqid)
-
-
-
     function DisplayQuestions(){
         return(
            <DisplayQuiz questions={questions} verbQName={verbQName} verbqid={verbqid} nextQ={nextQ} dispQuest={dispQuest} setGood={setGood} setBad={setBad} good={good} bad={bad} updusersuc={updusersuc}/>

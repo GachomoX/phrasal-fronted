@@ -7,37 +7,22 @@ import './question.css';
 
 const Question = ({dispQues, questions, score, setScore, answersram, nextQ, setGood, setBad, good, bad, updusersuc}) =>{
     const [selected, setSelected ] = useState(null);
-    
-    
-    const [botdeshab, setBotDesHab] = useState(true);
-    //console.log("tipo boton")
-   // console.log(botdeshab)
-
-function countQuest(){
-
-    if(dispQues >= 2){
-     
-        setBotDesHab(false);
-    }
-    else{
-        setBotDesHab(true);
-    }
-    nextQ();
-}
+    const [butdeshab, setButDesHab] = useState(true);
  
-function answerselected(i){ 
-  
-    if (answersram[i] === questions[dispQues].answer){
 
-        setGood(good+1);
-    }else{
-        setBad(bad+1);
+    function countQuest(){
+        nextQ();
     }
-   
-    console.log("dispQues Question actual")
-    console.log(dispQues)
-   
-}
+ 
+    function answerselected(i){ 
+    
+        if (answersram[i] === questions[dispQues].answer){
+
+            setGood(good+1);
+        }else{
+            setBad(bad+1);
+        }
+    }
 
   
   
@@ -54,13 +39,13 @@ function answerselected(i){
                                                      key={i} disabled={selected}>{opt}</button>)}
                 </div>
                     <div>
-                        <StyledButton  disabled={!botdeshab} onClick={()=>{countQuest()}}>
+                        <StyledButton  disabled={ (dispQues === 3) ? true : false} onClick={()=>{nextQ()}}>
+                 
                             Next
                         </StyledButton>
-                        <StyledButton   style={{backgroundColor: 'green'}}onClick={()=>{updusersuc()}}>
+                        <StyledButton   style={{backgroundColor: 'green'}} onClick={()=>{updusersuc()}}>
                             Save Score
                         </StyledButton>
-
                     </div>
                 </div>
             </div>
