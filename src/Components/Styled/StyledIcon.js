@@ -2,7 +2,8 @@ import styled from "styled-components";
 
 const StyledIcon = styled.div`
     font-size:  20px;
-    color: white;
+    color: blue;
+    padding: 10px;
  
 `
 

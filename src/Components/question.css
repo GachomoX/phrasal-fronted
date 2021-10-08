@@ -88,8 +88,37 @@
   }
 
   .row{
-    min-height: 40px;
-    min-width: 100%;
-    padding: 20px;
+ 
+   background-color: cornflowerblue;
  
   }
+
+  .tdwitdth{
+    margin-right: 20px;
+    margin-left:10px;
+    height:20px;
+    width: 200px;
+  }
+
+  .tdwitdthb{
+    padding: 10px;
+  }
+
+  .buttonq{
+    width: 80px;
+    height: 40px;
+    color: white;
+    background-color: blue;
+    margin-left:20px;
+  }
+
+  .cgr{
+    background-color: green ;
+    height: 20px;
+    color:white;
+  }
+
+  .ml{
+    margin-left: 420px;
+  }
+  

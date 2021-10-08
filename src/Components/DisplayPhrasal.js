@@ -89,23 +89,25 @@ let bodymeanBody = (
             <h3 className="questionphrasal">{verbName} {clickPrepadv}</h3>
              <div className="divider"></div>
             {verbMeaning.map((mean,i) => 
-              <tr className="row" >
+              <tr >
                 <td>
                    <StyledIcon ><FontAwesomeIcon icon={faBookmark}/></StyledIcon>
                 </td>
-                <td>
+                <td >
                   {(mean.definition)[0].toUpperCase() + (mean.definition).slice(1)}
                 </td>
-                <td>
-                  <button onClick={()=>exsynanth(mean.id)}>Example</button>
+                <td className="tdwidthb">
+                  <button  className="buttonq cgr" onClick={()=>exsynanth(mean.id)}>Example</button>
                 </td>
-                <td><button>Syn-Ant</button></td>
+                <td className="tdwidthb">
+                  <button className=" buttonq cgr">SynAnt</button>
+                </td>
               </tr>
             )}
           </p>
-          <StyledButton onClick={()=>handleOnClickLearned()}>
-            <StyledIcon><FontAwesomeIcon icon={faCheckCircle} /></StyledIcon>
-          </StyledButton>
+          <button className="buttonq ml" onClick={()=>handleOnClickLearned()}>
+            <FontAwesomeIcon icon={faCheckCircle} />
+          </button>
           {(congrats) ? (
             <StyledCongrats>
               <td>C</td> <td>O</td> <td>N</td> <td>G</td> <td>R</td> <td>A</td> <td>T</td> <td>S</td> <td>!</td> <td>!</td>
