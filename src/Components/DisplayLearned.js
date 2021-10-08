@@ -13,7 +13,8 @@ export default function DisplayLearned({learned, learnverbs, learnprepadvs}){
     console.log(learned)
     console.log("prepadvs")
     console.log(learnprepadvs)
-
+    const nv = [];
+    const np = [];
 
     const onlyphrasal = learned.phrasals;
 
@@ -35,31 +36,62 @@ export default function DisplayLearned({learned, learnverbs, learnprepadvs}){
   console.log(prepadvn)
 
 
-   //const vername = verbn.forEach(element => { calverb(element, 'learnverbs')});
-   const vername = verbn.forEach(element => ((learnverbs.find((ele) => ele.id === element)).name)) ;
-    //const prepadvname = prepadvn.forEach(element => { calverb(element, learnprepadvs)});
+  const vername = verbn.forEach(element => { calverb(element)});
+  const prepadvname = prepadvn.forEach(element => { calpadv(element)});
+   
 
-
-    function calverb(elem, looklearn){
+    function calverb(elem){
         //console.log("entre aca")
         console.log("array")
-        console.log(looklearn)
+    
         console.log(elem)
-        const name = (looklearn.find((ele) => ele.id === elem)).name;
+        const name = (learnverbs.find((ele) => ele.id === elem)).name;
+
+        const newnameverb =[nv.push(name)];
        
     console.log('PHRASAL')
     console.log(name)
-        return name;
+ 
+    console.log(nv)
+        return newnameverb;
+    }
+
+
+    function calpadv(elem){
+        //console.log("entre aca")
+        console.log("array")
+    
+        console.log(elem)
+        const name = (learnprepadvs.find((ele) => ele.id === elem)).name;
+
+        const newnameverb =[np.push(name)];
+       
+    console.log('PHRASAL')
+    console.log(name)
+ 
+    console.log(nv)
+        return newnameverb;
     }
 
  console.log("vername")
  console.log(vername)
- //console.log(prepadvname)
+ console.log(prepadvname)
 
-  
+  console.log(nv)
+  console.log(np)
   
     return(
-        <div>{verbn}</div>
+        <div>
+      
+            
+<div>
+            {nv.map((v,i) => {
+                        return(<tr>{v} {np[i]}</tr>)
+                           })}
+                       
+</div>
+            
+        </div>
     )
 }
 
