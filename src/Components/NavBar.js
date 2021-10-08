@@ -8,14 +8,15 @@ import StyledNav from './Styled/StyledNav';
 
 function NavBar() {
     return (
-     
         <StyledNav>
-        
                 <NavLink  className="navlink" to="/">
                     Home
                 </NavLink >
                 <NavLink className="navlink" to="/VerbContainer">
                     Verb
+                </NavLink >
+                <NavLink className="navlink" to="/LearnedContainer">
+                   Learned
                 </NavLink >
                 <NavLink className="navlink" to="/QuizContainer">
                     Quiz

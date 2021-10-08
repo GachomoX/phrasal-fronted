@@ -3,12 +3,14 @@ import styled from 'styled-components';
 import StyledGrid from './Styled/StyledGrid';
 import StyledCircle from './Styled/StyledCircle';
 import { Modal } from './Styled/Modal';
+import { Modal1 } from './Styled/Modal1';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle } from '@fortawesome/free-regular-svg-icons';
 import { faBookmark } from '@fortawesome/free-solid-svg-icons';
 import StyledIcon from "./Styled/StyledIcon";
 import StyledButton from "./Styled/StyledButton";
 import StyledCongrats from "./Styled/StyledCongrats";
+
 
 
 const Button = styled.button`
@@ -23,22 +25,37 @@ const Button = styled.button`
   text-align:center;
 `;
 
-export default function DisplayPhrasal({verbprepadv, verbName,  verbmeaning, meaning, verbMeaning, newMeaning, updateLearned}) {
-    console.log("en DISPLAYPHRASAL preposi")
-    console.log(verbmeaning)
-    console.log(newMeaning)
-   
+export default function DisplayPhrasal({verbprepadv, verbName,  verbmeaning, meaning, verbMeaning, newMeaning, updateLearned, example, meanbody}) {
+   console.log("verbMeaning")
+   console.log(verbMeaning)
+   console.log("meanbody")
+   console.log(meanbody)
+  
     const [showModal, setShowModal] = useState(false);
-    const [clickPrepadv, setClickPrepadv] = useState(null);
-    const [phrasalIdNow, setPhrasalIdNow] = useState(null);
-    const [congrats, setCongrats] = useState(false)
     const openModal = () => {
       setShowModal(prev => !prev)
     }
-   
+    
+
+    const [showModalEx, setShowModalEx] = useState(false);
+    const openModalEx = () => {
+      setShowModalEx(prevex => !prevex)
+    }
+
+ console.log("showModal")
+   console.log(showModal)
+   console.log("showModalEx")
+   console.log(showModalEx)
+
+
+    const [clickPrepadv, setClickPrepadv] = useState(null);
+    const [phrasalIdNow, setPhrasalIdNow] = useState(null);
+    const [congrats, setCongrats] = useState(false)
+    
 
     function lookmeaning(phid, pname){
-      console.log("entre a look");
+
+      console.log("entre a lookmeaning")
       setShowModal(prev=>!prev);
       setClickPrepadv(pname);
       setPhrasalIdNow(phid);
@@ -47,6 +64,10 @@ export default function DisplayPhrasal({verbprepadv, verbName,  verbmeaning, mea
 
     }
 
+    function exsynanth(meanId){
+      setShowModalEx(prev=>!prev);
+      example(meanId);
+    }
 
     function handleOnClickLearned(){
       updateLearned(phrasalIdNow);
@@ -54,24 +75,33 @@ export default function DisplayPhrasal({verbprepadv, verbName,  verbmeaning, mea
   
     }
 
+//console.log("meanbody")
+//console.log(meanbody)
+
     function filteredVerbMeaning(){
 
+let bodymeanBody = (
+  <div> hi </div>
+)
       let  bodyMeaning = (
-          <div>
-            <p>
-              <h3 className="questionphrasal">{verbName} {clickPrepadv}</h3>
-              <div className="divider"></div>
-              {verbMeaning.map((mean,i) => 
-                <tr style={{backgroundColor: i % 2 == 0?  'whitesmoke':'white', minHeight:'40px', minWidth: '100px'}}>
-              
-                  <td>
-                    <StyledIcon ><FontAwesomeIcon icon={faBookmark}/></StyledIcon>
-                  </td>
-                  <td>
-                    {mean.definition}
-                  </td>
-                </tr>
-              )}
+        <div>
+          <p>
+            <h3 className="questionphrasal">{verbName} {clickPrepadv}</h3>
+             <div className="divider"></div>
+            {verbMeaning.map((mean,i) => 
+              <tr className="row" >
+                <td>
+                   <StyledIcon ><FontAwesomeIcon icon={faBookmark}/></StyledIcon>
+                </td>
+                <td>
+                  {(mean.definition)[0].toUpperCase() + (mean.definition).slice(1)}
+                </td>
+                <td>
+                  <button onClick={()=>exsynanth(mean.id)}>Example</button>
+                </td>
+                <td><button>Syn-Ant</button></td>
+              </tr>
+            )}
           </p>
           <StyledButton onClick={()=>handleOnClickLearned()}>
             <StyledIcon><FontAwesomeIcon icon={faCheckCircle} /></StyledIcon>
@@ -80,10 +110,21 @@ export default function DisplayPhrasal({verbprepadv, verbName,  verbmeaning, mea
             <StyledCongrats>
               <td>C</td> <td>O</td> <td>N</td> <td>G</td> <td>R</td> <td>A</td> <td>T</td> <td>S</td> <td>!</td> <td>!</td>
             </StyledCongrats>):null}
-        </div>)
-      return(
-        <Modal showModal={showModal} setShowModal={setShowModal} bodyMeaning={bodyMeaning}/>
+        </div>
+      )
+      const newModal = <Modal showModal={showModal} setShowModal={setShowModal} bodyMeaning={bodyMeaning}/>
+      const newModalEx = <Modal showModalEx={showModalEx} setShowModalEx={setShowModalEx} bodyMeaningEx={bodymeanBody} />;
+      console.log(newModal);
+      console.log(newModalEx);
+      if (meanbody){
+        return (
+          newModalEx
         )
+      }
+      else{
+      return(
+        newModal
+        )}
     }
 
 
@@ -94,9 +135,7 @@ export default function DisplayPhrasal({verbprepadv, verbName,  verbmeaning, mea
                <div className="options"><button className={"singleOptionOrange"} onClick = {() => lookmeaning(vp.phrasalid, vp.name) }>{vp.name}</button></div>
             )}
             </div>
-            <StyledCircle display={"block"} >
-                  <h1> {verbName}</h1>
-            </StyledCircle>
+           
             {verbMeaning &&  filteredVerbMeaning() }   
         </StyledGrid>
 

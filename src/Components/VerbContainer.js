@@ -11,6 +11,7 @@ export default function VerbContainer(){
     const [verbMeaning, setVerbMeaning] = useState(null);
     const [newMeaning, setNewMeaning] = useState(false);
     const [updLearned, setUpdLearned] = useState(null);
+    const [meanbody, setMeanbody] = useState(null);
 
 
     useEffect(()=>{
@@ -37,6 +38,7 @@ export default function VerbContainer(){
 
 
     function meaning(pid){
+      console.log("entre a funcion meaning")
       const config = {
           method: "GET",
           headers: {
@@ -47,8 +49,26 @@ export default function VerbContainer(){
       fetch(urlComplete,config)
           .then(response => response.json())
           .then(json =>setVerbMeaning(json))
-      setNewMeaning(true)
+      setNewMeaning(true);
+      setMeanbody(null)
     }
+
+    function example(meanId){
+      const config = {
+        method: "GET",
+        headers: {
+          "Content-type":  "application/json"
+        }
+      }
+      let urlComplete = BASE_URL + 'meanbodies/' + meanId
+      fetch(urlComplete,config)
+          .then(response => response.json())
+          .then(json =>setMeanbody(json))
+    }
+
+
+
+
 
     function updateLearned(idphras){
       const config = {
@@ -66,7 +86,9 @@ export default function VerbContainer(){
 
     function allverbs(){
         return (
-          <Verb verbs={verbs} listverbprep={listverbprep} verbprepadv={verbprepadv} meaning={meaning} verbMeaning={verbMeaning} newMeaning={newMeaning} updateLearned={updateLearned}/>
+          <Verb verbs={verbs} listverbprep={listverbprep} verbprepadv={verbprepadv} meaning={meaning} 
+                verbMeaning={verbMeaning} newMeaning={newMeaning} updateLearned={updateLearned}
+                 example={example} meanbody={meanbody}/>
         )
     }
     

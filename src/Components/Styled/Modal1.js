@@ -6,7 +6,7 @@ import StyledIcon from "./StyledIcon";
 
 
 const Background = styled.div`
-width:700px;
+width:500px;
 height: 300px;
     background: rgba(0,0,0, 0.8);
     position: fixed;
@@ -16,7 +16,7 @@ height: 300px;
 `;
 
 const ModalWrapper = styled.div`
-    width: 900px;
+    width: 500px;
     height: 350px;
     box-shadow: 0 5px 16px rgba(0,0,0, 0.2);
     background: #fff;
@@ -52,19 +52,13 @@ const CloseModalButton = styled(MdClose)`
 
 `
 
-export const Modal = ({showModal, setShowModal, bodyMeaning}) => {
+export const Modal1 = ({showModalEx, setShowModalEx, bodyMeaningEx}) => {
     return(
         <>
-        {showModal ? (
-                <ModalWrapper showModal={showModal}>
-                    <ModalContent>  
-                        <CloseModalButton label='Close' onClick={()=>setShowModal(prev=>!prev)}>X</CloseModalButton>
-                        {bodyMeaning}
-                    </ModalContent>
-                  
-                </ModalWrapper>
+        {showModalEx ? (
+                <div>h1</div>
  
-        ) : null}
+        ) : <div>h2</div>}
       
         </>
     );

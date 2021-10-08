@@ -9,7 +9,7 @@ import StyledSettings from './Styled/StyledSettings';
 
 
 
-export default function Verb({verbs, listverbprep, verbprepadv, meaning, verbMeaning, newMeaning, updateLearned}){
+export default function Verb({verbs, listverbprep, verbprepadv, meaning, verbMeaning, newMeaning, updateLearned, example, meanbody}){
     
     const [verbName, setVerbName] = useState(null);
 
@@ -23,7 +23,8 @@ export default function Verb({verbs, listverbprep, verbprepadv, meaning, verbMea
 
     function filteredVerbPrep(){
         return(
-           <DisplayPhrasal  verbprepadv={verbprepadv} verbName={verbName} meaning={meaning} verbMeaning={verbMeaning} newMeaning={newMeaning} updateLearned={updateLearned}/>
+           <DisplayPhrasal verbprepadv={verbprepadv} verbName={verbName} meaning={meaning} verbMeaning={verbMeaning}
+                           newMeaning={newMeaning} updateLearned={updateLearned} example={example} meanbody={meanbody}/>
         )
     }
 

@@ -5,9 +5,12 @@ const StyledButton = styled.button`
    color: secondary;
    size: large;
    width: 185px;
-   height: 40px;
+   height: 30px;
    background-color: blue;
-   href: '/';
+   margin-left: 380px;
+   margin-top: 15px;
+   margin-right: 20px;
+
 `;
 
 export default StyledButton;
