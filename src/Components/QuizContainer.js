@@ -12,6 +12,7 @@ export default function QuizContainer(){
 
     const [good, setGood] = useState(0);
     const [bad, setBad] = useState(0);
+    const [selected, setSelected] = useState(null);
 
 //console.log("Good")
 //console.log(good)
@@ -42,6 +43,7 @@ export default function QuizContainer(){
         setDispQuest(0);
         setGood(0);
         setBad(0);
+        setSelected(null);
         const config = {
             method: "GET",
             headers: {
@@ -59,7 +61,8 @@ export default function QuizContainer(){
 
     function allQuizVerbs(){
         return (
-          <Quiz quizverbs={quizverbs} listquestion={listquestion} questions={questions} nextQ={nextQ} dispQuest={dispQuest} setGood={setGood} setBad={setBad} good={good} bad={bad} updusersuc={updusersuc}/>
+          <Quiz quizverbs={quizverbs} listquestion={listquestion} questions={questions} nextQ={nextQ} dispQuest={dispQuest} 
+                setGood={setGood} setBad={setBad} good={good} bad={bad} updusersuc={updusersuc} selected={selected} setSelected={setSelected}/>
         )
     }
     return (

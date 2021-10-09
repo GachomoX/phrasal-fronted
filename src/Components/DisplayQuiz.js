@@ -5,7 +5,7 @@ import { CircularProgress } from '@material-ui/core';
 import Question  from './Question';
 
 
-export default function DisplayQuiz({questions, verbQName, verbqid, nextQ, dispQuest, setGood, setBad, good, bad, updusersuc}){
+export default function DisplayQuiz({questions, verbQName, verbqid, nextQ, dispQuest, setGood, setBad, good, bad, updusersuc,selected, setSelected}){
 //console.log("estoy en DISPLAYQUIZ")
 //console.log("questions en DisplayQuiz")
 //console.log(questions)
@@ -35,7 +35,9 @@ export default function DisplayQuiz({questions, verbQName, verbqid, nextQ, dispQ
     return (
         <div className="quiz">
             <div className="subtitle">{verbQName}</div>
-            <Question dispQues={dispQuest}  questions={questions} answersram={answersram} nextQ={nextQ} setGood={setGood} setBad={setBad} good={good} bad={bad} updusersuc={updusersuc}/>
+            <Question dispQues={dispQuest}  questions={questions} answersram={answersram} nextQ={nextQ} 
+            setGood={setGood} setBad={setBad} good={good} bad={bad} updusersuc={updusersuc} selected={selected}
+            setSelected={setSelected}/>
         </div>
     )
 }

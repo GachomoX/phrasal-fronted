@@ -67,9 +67,6 @@ export default function VerbContainer(){
     }
 
 
-
-
-
     function updateLearned(idphras){
       const config = {
         method: "POST",

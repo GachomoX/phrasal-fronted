@@ -9,7 +9,7 @@ import StyledSettings from './Styled/StyledSettings';
 import { TextField, MenuItem } from '@material-ui/core';
 
 
-export default function Quiz({quizverbs, listquestion, questions, nextQ, dispQuest,setGood, setBad, good, bad, updusersuc}){
+export default function Quiz({quizverbs, listquestion, questions, nextQ, dispQuest,setGood, setBad, good, bad, updusersuc, selected, setSelected}){
     const [verbQName, setVerbQName] = useState(null);
     const [ verbqid, setVerbqId ] = useState(null);
    
@@ -23,7 +23,8 @@ export default function Quiz({quizverbs, listquestion, questions, nextQ, dispQue
 
     function DisplayQuestions(){
         return(
-           <DisplayQuiz questions={questions} verbQName={verbQName} verbqid={verbqid} nextQ={nextQ} dispQuest={dispQuest} setGood={setGood} setBad={setBad} good={good} bad={bad} updusersuc={updusersuc}/>
+           <DisplayQuiz questions={questions} verbQName={verbQName} verbqid={verbqid} nextQ={nextQ} dispQuest={dispQuest}
+            setGood={setGood} setBad={setBad} good={good} bad={bad} updusersuc={updusersuc} selected={selected} setSelected={setSelected}/>
         )
     }
 
