@@ -5,7 +5,7 @@ const StyledTitle = styled.h1`
     text-align:center;
     width:100%;
     font-size:50px;
-    height: 55px;
+    height: 50px;
     font-family: "Roboto";
     background-color: white;
 

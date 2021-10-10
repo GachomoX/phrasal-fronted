@@ -1,8 +1,6 @@
 import React from 'react';
 import { NavLink } from "react-router-dom";
 import "./navbar.css";
-import styled from 'styled-components';
-
 import './navlink.css';
 import StyledNav from './Styled/StyledNav';
 
@@ -20,7 +18,7 @@ function NavBar() {
                 </NavLink >
                 <NavLink className="navlink" to="/QuizContainer">
                     Quiz
-                </NavLink >   
+                </NavLink >     
 
           </StyledNav> 
     )

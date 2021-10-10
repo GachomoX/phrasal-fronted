@@ -7,8 +7,7 @@ const StyledButton = styled.button`
    width: 185px;
    height: 30px;
    background-color: blue;
-   margin-left: 380px;
-   margin-top: 15px;
+   margin-top: 8px;
    margin-right: 20px;
 
 `;

@@ -1,15 +1,8 @@
 .navopt{
- 
-
-    align-items: center;
-
- 
+     align-items: center;
     --text-opacity: 1;
     color: #f85103;
     font-weight: bolder;
-
-
-
     margin:0px 0px 0px 10px;
     text-decoration: none;
   }

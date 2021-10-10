@@ -38,10 +38,10 @@ const Question = ({dispQues, questions, score, setScore, answersram, nextQ, setG
                                                      key={i} disabled={selected}>{opt}</button>)}
                 </div>
                     <div>
-                        <StyledButton  disabled={ (dispQues === 3) ? true : false} onClick={()=>{looknextQ()}}>
+                        <StyledButton  style={{ marginLeft: "50px" }} disabled={ (dispQues === 3) ? true : false} onClick={()=>{looknextQ()}}>
                             Next
                         </StyledButton>
-                        <StyledButton   style={{backgroundColor: 'green'}} onClick={()=>{updusersuc()}}>
+                        <StyledButton   style={{ marginLeft: "10px", backgroundColor: 'green'}} onClick={()=>{updusersuc()}}>
                             Save Score
                         </StyledButton>
                     </div>

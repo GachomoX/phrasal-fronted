@@ -5,11 +5,15 @@ import styled from 'styled-components';
 import './index.css';
 
 
+
+
 const StyledMain = styled.div`
-  min-height: 98vh;
+  height: 105vh;
   background: linear-gradient(to right top, gray , white);
-  margin: 5px;
+  margin: 0px;
   width: 100%;
+  padding: 0;
+
 `;
 
 

@@ -1,14 +1,10 @@
 import './quiz.css';
 import React, {useState, useRef} from 'react';
-import styled from 'styled-components';
-import { CircularProgress } from '@material-ui/core';
 import Question  from './Question';
 
 
 export default function DisplayQuiz({questions, verbQName, verbqid, nextQ, dispQuest, setGood, setBad, good, bad, updusersuc,selected, setSelected}){
-//console.log("estoy en DISPLAYQUIZ")
-//console.log("questions en DisplayQuiz")
-//console.log(questions)
+
  const [nextQuestion, setNextQuestion]= useState(0);
  const [score, setScore] = useState(0);
 
@@ -17,8 +13,7 @@ export default function DisplayQuiz({questions, verbQName, verbqid, nextQ, dispQ
  //Random to show the answers
    const answ = [0,1,2,3];
    const randansw= shuffle(answ);
-   // console.log("nextQuestion");
-   //console.log(nextQuestion)
+  
   
    function shuffle(a) {
         for (let i = a.length - 1; i > 0; i--) {

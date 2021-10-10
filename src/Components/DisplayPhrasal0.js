@@ -1,9 +1,8 @@
 import React, {useState, useRef} from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import styled from 'styled-components';
 import StyledGrid from './Styled/StyledGrid';
 import StyledCircle from './Styled/StyledCircle';
-//import { Modal } from './Styled/Modal';
+import { Modal } from './Styled/Modal';
 import { Modal1 } from './Styled/Modal1';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle } from '@fortawesome/free-regular-svg-icons';
@@ -11,7 +10,6 @@ import { faBookmark } from '@fortawesome/free-solid-svg-icons';
 import StyledIcon from "./Styled/StyledIcon";
 import StyledButton from "./Styled/StyledButton";
 import StyledCongrats from "./Styled/StyledCongrats";
-import Modal from 'react-bootstrap/Modal';
 
 
 
@@ -33,12 +31,21 @@ export default function DisplayPhrasal({verbprepadv, verbName,  verbmeaning, mea
    console.log("meanbody")
    console.log(meanbody)
   
-   
+    const [showModal, setShowModal] = useState(false);
+    const openModal = () => {
+      setShowModal(prev => !prev)
+    }
+    
 
-    const [modalShow, setModalShow] = React.useState(false);
+    const [showModalEx, setShowModalEx] = useState(false);
+    const openModalEx = () => {
+      setShowModalEx(prevex => !prevex)
+    }
 
- console.log("modalShow")
-   console.log(modalShow)
+ console.log("showModal")
+   console.log(showModal)
+   console.log("showModalEx")
+   console.log(showModalEx)
 
 
     const [clickPrepadv, setClickPrepadv] = useState(null);
@@ -49,11 +56,7 @@ export default function DisplayPhrasal({verbprepadv, verbName,  verbmeaning, mea
     function lookmeaning(phid, pname){
 
       console.log("entre a lookmeaning")
-     // setShowModal(prev=>!prev);
-     
-      setModalShow(true)
-
-
+      setShowModal(prev=>!prev);
       setClickPrepadv(pname);
       setPhrasalIdNow(phid);
       setCongrats(false);
@@ -62,45 +65,29 @@ export default function DisplayPhrasal({verbprepadv, verbName,  verbmeaning, mea
     }
 
     function exsynanth(meanId){
+      setShowModalEx(prev=>!prev);
       example(meanId);
     }
 
     function handleOnClickLearned(){
       updateLearned(phrasalIdNow);
       setCongrats(true);
+  
     }
 
-    
-    function MyVerticallyCenteredModal(props) {
-
-        return (
-          <Modal
-            {...props}
-            size="lg"
-            aria-labelledby="contained-modal-title-vcenter"
-            centered
-          >
-            <Modal.Header closeButton>
-              <Modal.Title  style= {{backgroundColor: '#ee0b0b', color: 'white'}} id="contained-modal-title-vcenter">
-              {verbName} {clickPrepadv}
-              </Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-              
-                {props.bodyMeaning}
-              
-            </Modal.Body>
-          
-          </Modal>
-        );
-      }
+//console.log("meanbody")
+//console.log(meanbody)
 
     function filteredVerbMeaning(){
-console.log("entre a filtered")
 
+let bodymeanBody = (
+  <div> hi </div>
+)
       let  bodyMeaning = (
         <div>
           <p>
+            <h3 className="questionphrasal">{verbName} {clickPrepadv}</h3>
+             <div className="divider"></div>
             {verbMeaning.map((mean,i) => 
               <tr >
                 <td>
@@ -110,7 +97,7 @@ console.log("entre a filtered")
                   {(mean.definition)[0].toUpperCase() + (mean.definition).slice(1)}
                 </td>
                 <td className="tdwidthb">
-                  <button  className="buttonq cgr" >Example</button>
+                  <button  className="buttonq cgr" onClick={()=>exsynanth(mean.id)}>Example</button>
                 </td>
                 <td className="tdwidthb">
                   <button className=" buttonq cgr">SynAnt</button>
@@ -126,17 +113,20 @@ console.log("entre a filtered")
               <td>C</td> <td>O</td> <td>N</td> <td>G</td> <td>R</td> <td>A</td> <td>T</td> <td>S</td> <td>!</td> <td>!</td>
             </StyledCongrats>):null}
         </div>
-      ) 
-      console.log({bodyMeaning})
-      const newModal = <MyVerticallyCenteredModal show={modalShow} onHide={() => setModalShow(false)} 
-                       bodyMeaning = {bodyMeaning}/>
-
-                               
-      return(
-        <>
-            {newModal}
-        </>
+      )
+      const newModal = <Modal showModal={showModal} setShowModal={setShowModal} bodyMeaning={bodyMeaning}/>
+      const newModalEx = <Modal showModalEx={showModalEx} setShowModalEx={setShowModalEx} bodyMeaningEx={bodymeanBody} />;
+      console.log(newModal);
+      console.log(newModalEx);
+      if (meanbody){
+        return (
+          newModalEx
         )
+      }
+      else{
+      return(
+        newModal
+        )}
     }
 
 
