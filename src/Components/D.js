@@ -1,5 +1,5 @@
 import React, {useState, useRef} from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
+
 import styled from 'styled-components';
 import StyledGrid from './Styled/StyledGrid';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -8,7 +8,10 @@ import { faBookmark } from '@fortawesome/free-solid-svg-icons';
 import StyledIcon from "./Styled/StyledIcon";
 import StyledCongrats from "./Styled/StyledCongrats";
 import Modal from 'react-bootstrap/Modal';
-import Carousel from 'react-bootstrap/Modal';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {Accordion, Card} from 'react-bootstrap';
+
+import { useAccordionButton } from 'react-bootstrap/AccordionButton';
 
 
 
@@ -30,10 +33,18 @@ export default function DisplayPhrasal({verbprepadv, verbName,  verbmeaning, mea
    console.log(verbMeaning)
    console.log("meanbody")
    console.log(meanbody)
-  
+
+ 
+
+ 
    const [key, setKey] = useState('home');
 
     const [modalShow, setModalShow] = React.useState(false);
+
+ console.log("modalShow")
+   console.log(modalShow)
+
+
     const [clickPrepadv, setClickPrepadv] = useState(null);
     const [phrasalIdNow, setPhrasalIdNow] = useState(null);
     const [congrats, setCongrats] = useState(false)
@@ -46,10 +57,32 @@ export default function DisplayPhrasal({verbprepadv, verbName,  verbmeaning, mea
       setClickPrepadv(pname);
       setPhrasalIdNow(phid);
       setCongrats(false);
+      
       meaning(phid);
+  
+
     }
 
+
+    const renderAccordion = (verbMeaning,index) => {
+        return(
+        <Accordion key={index}>
+            <Card>
+                <Accordion.Toggle as={Card.Header} eventKey={verbMeaning}>
+                   {verbMeaning.definition}
+                </Accordion.Toggle>
+                <Accordion.Collapse eventKey={verbMeaning}>
+                    <Card.Body>Hello, I am the body</Card.Body>
+                </Accordion.Collapse>
+            </Card>
+                
+           
+        </Accordion>)
+    }
     
+    function exsynanth(meanId){
+      example(meanId);
+    }
 
     function handleOnClickLearned(){
       updateLearned(phrasalIdNow);
@@ -82,25 +115,22 @@ export default function DisplayPhrasal({verbprepadv, verbName,  verbmeaning, mea
       }
 
     function filteredVerbMeaning(){
+        console.log("entre a filter para llamar a modal")
       let  bodyMeaning = (
         <div>
           <p>
-            {verbMeaning.map((mean,i) => 
-              <tr >
-                <td>
-                   <StyledIcon ><FontAwesomeIcon icon={faBookmark}/></StyledIcon>
-                </td>
-                <td >
-                  {(mean.definition)[0].toUpperCase() + (mean.definition).slice(1)}
-                </td>
-                <td className="tdwidthb">
-                  <button  className="buttonq cgr" onClick={()=>alert('aparecio')}>Example</button>
-                </td>
-                <td className="tdwidthb">
-                  <button className=" buttonq cgr">SynAnt</button>
-                </td>
-              </tr>
-            )}
+            {verbMeaning.map((index)=><Accordion key={index}>
+            <Card>
+                <Accordion.Toggle as={Card.Header} eventKey={verbMeaning}>
+                   {verbMeaning.definition}
+                </Accordion.Toggle>
+                <Accordion.Collapse eventKey={verbMeaning}>
+                    <Card.Body>Hello, I am the body</Card.Body>
+                </Accordion.Collapse>
+            </Card>
+                
+           
+        </Accordion>)}
           </p>
           <button className="buttonq ml" onClick={()=>handleOnClickLearned()}>
             <FontAwesomeIcon icon={faCheckCircle} />
@@ -118,7 +148,9 @@ export default function DisplayPhrasal({verbprepadv, verbName,  verbmeaning, mea
                                
       return(
         <>
+        <div>
             {newModal}
+            </div>
         </>
         )
     }

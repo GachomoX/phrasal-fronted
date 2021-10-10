@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import { isElement } from 'react-dom/test-utils';
+import Table from 'react-bootstrap/Table';
 
 
 
@@ -42,10 +42,17 @@ export default function DisplayLearned({learned, learnverbs, learnprepadvs}){
  
     return(
         <div className="cent">
-            <table className="table">
-            {nv.map((v,i) => {
-                        return(<tr className="lear">{v} {np[i]}</tr>)
-                           })}
+        <table border="1" className = "table table-striped table-bordered table-hover">
+                <thead>
+                    <tr className="titlearned">
+                        <th>Phrasal Verb</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {nv.map((v,i) => {
+                        return(<tr className="rowlearned table-warning">{v} {np[i]}</tr>)
+                    })}
+                </tbody>
             </table>
         </div>
     )

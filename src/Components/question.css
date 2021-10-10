@@ -126,15 +126,24 @@
   /* For DLea */
 
   .cent{
-    margin-left: 700px;
+    margin-left: 600px;
     margin-top: 30px;
     border:blue;
+    text-align: center;
+    width: 200px;
+    font-family: "Poppins", san-serif;
   }
 
-  .lear{
+  .rowlearned{
     height: 30px;
+    background-color: white;
   }
 
   .table{
     border: blue;
   }
+
+ .titlearned{
+   color:blue;
+   font-size: 20px;
+ }

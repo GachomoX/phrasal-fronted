@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import DisplayPhrasal from './DisplayPhrasal';
+import D from './D';
 import styled from 'styled-components';
 import StyleSecondMod from './Styled/StyledSecondMod';
 import StyledSelect  from './Styled/StyledSelect';

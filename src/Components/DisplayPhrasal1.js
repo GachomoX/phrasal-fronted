@@ -34,6 +34,11 @@ export default function DisplayPhrasal({verbprepadv, verbName,  verbmeaning, mea
    const [key, setKey] = useState('home');
 
     const [modalShow, setModalShow] = React.useState(false);
+
+ console.log("modalShow")
+   console.log(modalShow)
+
+
     const [clickPrepadv, setClickPrepadv] = useState(null);
     const [phrasalIdNow, setPhrasalIdNow] = useState(null);
     const [congrats, setCongrats] = useState(false)
@@ -46,10 +51,16 @@ export default function DisplayPhrasal({verbprepadv, verbName,  verbmeaning, mea
       setClickPrepadv(pname);
       setPhrasalIdNow(phid);
       setCongrats(false);
+      
       meaning(phid);
+  
+
     }
 
     
+    function exsynanth(meanId){
+      example(meanId);
+    }
 
     function handleOnClickLearned(){
       updateLearned(phrasalIdNow);
@@ -84,6 +95,13 @@ export default function DisplayPhrasal({verbprepadv, verbName,  verbmeaning, mea
     function filteredVerbMeaning(){
       let  bodyMeaning = (
         <div>
+
+
+
+
+
+
+
           <p>
             {verbMeaning.map((mean,i) => 
               <tr >
