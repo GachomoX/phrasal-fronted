@@ -9,41 +9,14 @@ const Question = ({dispQues, questions, score, setScore, answersram, nextQ, setG
     
     const [butdeshab, setButDesHab] = useState(true);
 
-    const[butcoloranswer, setButColorAnswer] = useState('white');
-    var dynamic = `style= backgroundColor : ${butcoloranswer}`
-    
-    //let btn_class = this.state.black ? "blackButton" : "whiteButton";
- /*
-    const itisselected = (i) => {
-        if (selected ===i ){
-            setSelected(i)
-        }
-    }*/
-
 
     function looknextQ(){ 
-         console.log("ENTRE A COUNTQUEST before")
-        console.log(selected)
-        
         setSelected(null); 
-       
-        console.log("ENTRE A COUNTQUEST after")
         nextQ();
     }
  
-    function answerselected(i){ //arreglando esta funcion OJOOOOOOOOOOOOOOOOOOOO
-
-        setButColorAnswer("green");
-
-console.log("entre a answerselected")
-console.log(i)
-console.log("SELECTED BEFORE")
-console.log(selected)
-console.log("SELECTED AFTER")
+    function answerselected(i){ 
         setSelected(i+1);// 0 looks at null
-        console.log(selected)
-        console.log("dispQues")
-        console.log(dispQues)
         if (answersram[i] === questions[dispQues].answer){
             setGood(good+1);
         }else{
