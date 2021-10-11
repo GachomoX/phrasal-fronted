@@ -1,24 +1,33 @@
 import React, {useEffect, useState} from 'react';
 import Table from 'react-bootstrap/Table';
+import Pagination from './Pagination';
 
 
 
-export default function DisplayLearned({learned, learnverbs, learnprepadvs}){
+
+export default function DisplayLearned({learned, learnverbs, learnprepadvs, indOfLastPhv, indFirsPhv, phrasalPerPage, paginate}){
     //learned => Phrasal Verbs learned by user
     //learnverb => Names of verbs
 
     const nv = [];
     const np = [];
+console.log("en display learned")
+console.log(learned)
+
 
     const onlyphrasal = learned.phrasals;
 
     let hash = {};
     const onlyphrasalfilt = onlyphrasal.filter(o => hash[o.id] ? false : hash[o.id] = true);
-   
+    const totalPhrasal = onlyphrasalfilt.length;
+    const currentPhvs = onlyphrasalfilt.slice(indFirsPhv, indOfLastPhv );
+
+    
+ 
 
    //const ver = learned.phrasals.map((elem) =>elem.verb_id)
-   const verbn = onlyphrasalfilt.map((elem) =>elem.verb_id);
-   const prepadvn = onlyphrasalfilt.map((elem) =>elem.prepadv_id);
+   const verbn = currentPhvs.map((elem) =>elem.verb_id);
+   const prepadvn = currentPhvs.map((elem) =>elem.prepadv_id);
 
 
 
@@ -42,10 +51,10 @@ export default function DisplayLearned({learned, learnverbs, learnprepadvs}){
  
     return(
         <div className="cent">
-        <table border="1" className = "table table-striped table-bordered table-hover">
+            <table border="1" className = "table table-striped table-bordered table-hover">
                 <thead>
                     <tr className="titlearned">
-                        <th>Phrasal Verb</th>
+                        <th>Phrasal Verbs Learned</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -54,6 +63,9 @@ export default function DisplayLearned({learned, learnverbs, learnprepadvs}){
                     })}
                 </tbody>
             </table>
+            
+               <Pagination phrasalPerPage={phrasalPerPage} totalPhrasal={totalPhrasal} paginate={paginate}/>
+           
         </div>
     )
 }

@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import DisplayLearned from './DisplayLearned';
+import Pagination from './Pagination';
 
 
 
@@ -9,6 +10,9 @@ export default function LearnedContainer(){
     const [learned, setLearned] = useState(null);
     const [learnverbs, setLearnVerbs] = useState(null);
     const [learnprepadvs, setLearnPrepadvs]= useState(null);
+//Control per Phrasal Verbs per Page
+    const [currentPage, setCurrentPage] = useState(1);
+    const [phrasalPerPage, setPhrasalPerPage] = useState(11);
 
     useEffect(()=>{
         const config = {
@@ -37,14 +41,20 @@ export default function LearnedContainer(){
             .then (json => setLearnPrepadvs(json))
       },[])
 
-console.log("learned")
-console.log(learned)
-console.log("verbs")
-console.log(learnverbs)
+//Get current phrasals verbs
+const indOfLastPhv = currentPage * phrasalPerPage;
+const indFirsPhv = indOfLastPhv - phrasalPerPage;
+
+
 
 function alllearned(){
+   const paginate = (pageNumber) => setCurrentPage(pageNumber)
     return(
-        <DisplayLearned learned={learned} learnverbs={learnverbs} learnprepadvs={learnprepadvs} />
+        <div>
+            <DisplayLearned learned={learned} learnverbs={learnverbs} learnprepadvs={learnprepadvs} 
+            indOfLastPhv={indOfLastPhv} indFirsPhv={indFirsPhv} phrasalPerPage={phrasalPerPage} paginate={paginate}/>
+           
+        </div>
     )
 }
     
