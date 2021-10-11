@@ -5,11 +5,12 @@
   padding: 0;
   box-sizing: border-box;
   scrollbar-width: thin;
+
 }
 
 *::-webkit-scrollbar{
   width: 8px;
-  background-color: grey;;
+  background-color: grey;
 }
 
 body {

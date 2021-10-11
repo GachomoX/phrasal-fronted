@@ -15,6 +15,7 @@ const StyledMain = styled.div`
   width: 100%;
   padding: 0;
 
+
 `;
 
 

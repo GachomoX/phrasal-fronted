@@ -7,7 +7,7 @@ import StyledSelect  from './Styled/StyledSelect';
 import StyledTd from './Styled/StyledTd';
 import StyledContent from './Styled/StyledContent';
 import StyledSettings from './Styled/StyledSettings';
-
+import AccordionPhrasal from './AccordionPhrasal';
 
 
 export default function Verb({verbs, listverbprep, verbprepadv, meaning, verbMeaning, newMeaning, updateLearned, example, meanbody}){
@@ -24,7 +24,7 @@ export default function Verb({verbs, listverbprep, verbprepadv, meaning, verbMea
 
     function filteredVerbPrep(){
         return(
-           <DisplayPhrasal verbprepadv={verbprepadv} verbName={verbName} meaning={meaning} verbMeaning={verbMeaning}
+           <AccordionPhrasal verbprepadv={verbprepadv} verbName={verbName} meaning={meaning} verbMeaning={verbMeaning}
                            newMeaning={newMeaning} updateLearned={updateLearned} example={example} meanbody={meanbody}/>
         )
     }
