@@ -12,14 +12,12 @@ import Accordion from 'react-bootstrap/Accordion';
 
 export default function AccordionPhrasal({verbprepadv, verbName,  verbmeaning, meaning, verbMeaning, newMeaning, updateLearned, example, meanbody}) {
 
-    const [key, setKey] = useState('home');
-
     const [modalShow, setModalShow] = React.useState(false);
     const [clickPrepadv, setClickPrepadv] = useState(null);
     const [phrasalIdNow, setPhrasalIdNow] = useState(null);
     const [congrats, setCongrats] = useState(false)
 
-    const [showModalEx, setShowModalEx] = useState(false);
+    const [showModalEx, setShowModalEx] = useState(true);
     const openModalEx = () => {
       setShowModalEx(prevex => !prevex)
     }
@@ -43,10 +41,33 @@ export default function AccordionPhrasal({verbprepadv, verbName,  verbmeaning, m
 
     function exsynanth(meanId){
         setShowModalEx(prev=>!prev);
-        console.log(showModalEx)
+        console.log('showModalEx')
         console.log(showModalEx)
         example(meanId);
+        ver();
     }
+
+
+
+    function ver(){
+        console.log("ver")
+        let bodymeanBody1 = (
+            <div> "hi "</div>
+        )
+        console.log('bodymeanBody')
+        console.log(bodymeanBody1)
+        return (
+            <>
+           bodymeanBody1
+           </>
+        )
+    }
+    let bodymeanBody2 = (
+        <div> "hi "</div>
+    )
+
+
+
 
     function filteredVerbMeaning(){
         let  bodyMeaning = (
@@ -60,12 +81,7 @@ export default function AccordionPhrasal({verbprepadv, verbName,  verbmeaning, m
                   <td >
                     {(mean.definition)[0].toUpperCase() + (mean.definition).slice(1)}
                   </td>
-                  <td className="tdwidthb">
-                    <button  className="buttonq cgr" onClick={()=>exsynanth(mean.id)}>Example</button>
-                  </td>
-                  <td className="tdwidthb">
-                    <button className=" buttonq cgr">SynAnt</button>
-                  </td>
+                  
                 </tr>
               )}
             </p>
@@ -86,13 +102,14 @@ export default function AccordionPhrasal({verbprepadv, verbName,  verbmeaning, m
     }
 
     return(
-        <Accordion style={{marginLeft: '320px', marginTop: '30px', width: '700px', backgroundColor: 'green !important'}} defaultActiveKey="0">
+        <Accordion style={{marginLeft: '320px', marginTop: '30px', width: '700px'}} defaultActiveKey="0">
             {verbprepadv.map((vp,i) =>
                 <Accordion.Item eventKey={i} onClick={()=>lookmeaning(vp.phrasalid, vp.name)}>   
-                <Accordion.Header>{vp.name}</Accordion.Header>
-                <Accordion.Body>
-                {verbMeaning &&  filteredVerbMeaning() } 
-                </Accordion.Body>
+                    <Accordion.Header>{vp.name}</Accordion.Header>
+                    <Accordion.Body>
+                        {verbMeaning &&  filteredVerbMeaning() } 
+                    </Accordion.Body>
+                   
                 </Accordion.Item>
             )}
       </Accordion>
