@@ -17,7 +17,8 @@ function App() {
          <Route path="/VerbContainer" > 
            <VerbContainer />
          </Route>
-         <Route exact path="/" >   
+         <Route exact path="/" >
+           
          </Route>
          <Route path="/QuizContainer">
            <QuizContainer />

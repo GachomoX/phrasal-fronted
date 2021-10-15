@@ -14,7 +14,8 @@ export default function LearnedContainer(){
     const [currentPage, setCurrentPage] = useState(1);
     const [phrasalPerPage, setPhrasalPerPage] = useState(11);
     
-    const paginate = (pageNumber) => {
+    const paginate = (pageNumber, e) => {
+        e.preventDefault();
         setCurrentPage(pageNumber);
     }
 

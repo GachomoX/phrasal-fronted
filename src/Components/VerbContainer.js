@@ -83,6 +83,7 @@ export default function VerbContainer(){
 
     function allverbs(){
         return (
+
           <Verb verbs={verbs} listverbprep={listverbprep} verbprepadv={verbprepadv} meaning={meaning} 
                 verbMeaning={verbMeaning} newMeaning={newMeaning} updateLearned={updateLearned}
                  example={example} meanbody={meanbody}/>

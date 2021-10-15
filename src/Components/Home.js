@@ -5,15 +5,15 @@ import StyledImg from './Styled/StyledImg';
 
 function Home() {
     return (
-        <StyledContentHome>
+ 
             <div className="Settings">
                 <span>Home</span>
+                <StyledImg src='process.env.PUBLIC_URL + /images/Learn.jpg' alt="Phrasal Verbs"/>
             </div>
-            <StyledImg src='process.env.PUBLIC_URL + /images/Learn.jpg' alt="Phrasal Verbs"/>
+            
           
             
 
-        </StyledContentHome>
     )
 }
 

@@ -10,6 +10,7 @@ import StyledCongrats from "./Styled/StyledCongrats";
 import Modal from 'react-bootstrap/Modal';
 import Accordion from 'react-bootstrap/Accordion';
 
+
 export default function AccordionPhrasal({verbprepadv, verbName,  verbmeaning, meaning, verbMeaning, newMeaning, updateLearned, example, meanbody}) {
 
     const [modalShow, setModalShow] = React.useState(false);
@@ -22,15 +23,18 @@ export default function AccordionPhrasal({verbprepadv, verbName,  verbmeaning, m
       setShowModalEx(prevex => !prevex)
     }
 
+    
 
-    function lookmeaning(phid, pname){
+    function lookmeaning(phid, pname, eventKey){
 
         console.log("entre a lookmeaning")   
-        setModalShow(true)
+       console.log(eventKey)
+      
+  
         setClickPrepadv(pname);
         setPhrasalIdNow(phid);
         setCongrats(false);
-        meaning(phid);
+        meaning(phid);  
     }
   
   
@@ -40,48 +44,30 @@ export default function AccordionPhrasal({verbprepadv, verbName,  verbmeaning, m
     }
 
     function exsynanth(meanId){
-        setShowModalEx(prev=>!prev);
-        console.log('showModalEx')
-        console.log(showModalEx)
-        example(meanId);
-        ver();
+      example(meanId);
     }
-
-
-
-    function ver(){
-        console.log("ver")
-        let bodymeanBody1 = (
-            <div> "hi "</div>
-        )
-        console.log('bodymeanBody')
-        console.log(bodymeanBody1)
-        return (
-            <>
-           bodymeanBody1
-           </>
-        )
-    }
-    let bodymeanBody2 = (
-        <div> "hi "</div>
-    )
-
-
 
 
     function filteredVerbMeaning(){
+       
         let  bodyMeaning = (
           <div>
             <p>
               {verbMeaning.map((mean,i) => 
                 <tr >
                   <td>
-                     <StyledIcon ><FontAwesomeIcon icon={faBookmark}/></StyledIcon>
+                     <StyledIcon >
+                       <FontAwesomeIcon icon={faBookmark}/>
+                     </StyledIcon>
                   </td>
                   <td >
                     {(mean.definition)[0].toUpperCase() + (mean.definition).slice(1)}
                   </td>
-                  
+                  <td>
+                    <button type="button" class="btn btn-primary active" data-toggle="modal" data-target="#myModal" onClick={()=>exsynanth(mean.id)}>
+                        Example
+                    </button>
+                  </td>
                 </tr>
               )}
             </p>
@@ -92,6 +78,21 @@ export default function AccordionPhrasal({verbprepadv, verbName,  verbmeaning, m
               <StyledCongrats>
                 <td>C</td> <td>O</td> <td>N</td> <td>G</td> <td>R</td> <td>A</td> <td>T</td> <td>S</td> <td>!</td> <td>!</td>
               </StyledCongrats>):null}
+       
+         
+              <div className="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" >
+                <div className="modal-dialog" role="document">
+                  <div className="modal-content">
+                    <div className="modal-body">
+                      {(meanbody) ? (meanbody[0].example): null}
+                    </div>
+                    <div className="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+         
           </div>
         )                       
         return(
@@ -102,9 +103,9 @@ export default function AccordionPhrasal({verbprepadv, verbName,  verbmeaning, m
     }
 
     return(
-        <Accordion style={{marginLeft: '320px', marginTop: '30px', width: '700px'}} defaultActiveKey="0">
+        <Accordion  style={{marginLeft: '320px', marginTop: '30px', width: '700px'}} defaultActiveKey="0">
             {verbprepadv.map((vp,i) =>
-                <Accordion.Item eventKey={i} onClick={()=>lookmeaning(vp.phrasalid, vp.name)}>   
+                <Accordion.Item eventKey={i} onClick={(eventKey)=>lookmeaning(vp.phrasalid, vp.name,eventKey)}>   
                     <Accordion.Header>{vp.name}</Accordion.Header>
                     <Accordion.Body>
                         {verbMeaning &&  filteredVerbMeaning() } 
@@ -112,8 +113,7 @@ export default function AccordionPhrasal({verbprepadv, verbName,  verbmeaning, m
                    
                 </Accordion.Item>
             )}
-      </Accordion>
+      </Accordion> 
     )
 
 }
-

@@ -147,3 +147,15 @@
    color:blue;
    font-size: 20px;
  }
+
+ .mr{
+  display:inline-block;
+  width: 200px;
+  height: 50px;
+ }
+
+ .modal-dialog {
+  margin-top: 30vh;
+  margin-left: 120vh;
+
+}
