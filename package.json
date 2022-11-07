@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.4",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "@material-ui/core": "^4.12.3",
     "@reach/combobox": "^0.16.1",
     "@reach/listbox": "^0.16.1",
